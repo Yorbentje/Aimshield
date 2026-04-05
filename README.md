@@ -6,9 +6,7 @@
 Je kunt hier nog steeds silent aim gebruiken, zolang je binnen een halve seconde na het legit richten schiet.  
 Dus eerst legit op iemand aimen en daarna binnen een halve seconde de kogel lossen.
 
-Deze methode werkt het beste voor long-range fights, omdat:
-- Hoe verder de fight is, hoe kleiner je FOV moet zijn.
-- Het handig is om je silent aim knop te keybinden op een zijknop van je muis, zodat je zelf bepaalt wanneer je hem activeert (een soort push-to-silent-aim).
+Deze methode werkt het beste voor long-range fights.
 
 • AimShield bij shotguns staat volledig uit. Daardoor kun je met shotguns ook een unlimited FOV gebruiken, omdat de shells anders voor veel false detections zouden zorgen.
 
