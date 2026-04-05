@@ -68,9 +68,6 @@ AimShield is built to protect your FiveM server by detecting common cheating met
 
 For any questions or assistance, please reach out to us:
 
-- **Email:** nglorym.2025@gmail.com
-- **Discord:** @nglorym
-- Via the 'Contact' button on our website [aimshield.xyz](https://aimshield.xyz)
+- **Discord:** https://discord.gg/jEeNEsD2sz
 
-For more details, updates, and documentation, please visit our website at [aimshield.xyz](https://aimshield.xyz).
 "# Aimshield" 
