@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="darkBackground"></div>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-message">
+      <h1>Loading AimShield...</h1>
+    </div>
+  </div>
+
+  <div id="notification-container" class="hidden">
+    <div id="notification-box">
+        <p id="notification-text"></p>
+    </div>
+</div>
+
+  <div id="menu-container" class="menu-container hidden">
+    <header>
+      <div class="branding-container">
+        <img src="../ui/logo.png" alt="AimShield logo" class="logo">
+        <span class="title">AimShield</span>
+      </div>
+      <div class="header-buttons">
+        <button id="close-button" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </header>    
+
+    <nav>
+      <ul>
+        <li class="tab active" data-tab="logs-tab">📝 Recent Logs</li>
+        <li class="tab" data-tab="players-tab">👥 Detected Players</li>
+        <li class="tab" data-tab="settings-tab">⚙️ Settings</li>
+      </ul>
+    </nav>
+    
+    <!-- Voeg dit toe in de content sectie -->
+    <div id="settings-tab" class="tab-content">
+      <div class="settings-container">
+        <div class="setting-item">
+          <h3><i class="fas fa-bell"></i> Notifications</h3>
+          <label class="switch">
+            <input type="checkbox" id="toggle-notifications" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <h3><i class="fas fa-volume-up"></i> Sound Alerts</h3>
+          <label class="switch">
+            <input type="checkbox" id="toggle-sound" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="setting-item info-box">
+          <i class="fas fa-info-circle"></i>
+          <p>Settings are saved automatically and apply to all future notifications.</p>
+        </div>
+      </div>
+    </div>
+
+    <input type="text" id="hidden-copy-input" style="position: absolute; left: -9999px;">
+
+    <section id="content">
+      
+      <div id="logs-tab" class="tab-content active">
+        <table id="logs-table">
+          <thead>
+            <tr>
+              <th>Player Name</th>
+              <th>Weapon Hash</th>
+              <th>Date/Time</th>
+              <th>Action</th>              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button class="view-btn copy-log-btn">�� Copy Log</button>
+                <button class="view-btn recreate-btn">🔄 Recreate</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="search-sort-container">
+        <input type="text" id="playerSearch" placeholder="🔍 Search by name, ID or quantity detections...">
+        <select id="playerSort">
+          <option value="recent">📅 Sort: Recent</option>
+          <option value="asc">⬆️ Detections - Low to High</option>
+          <option value="desc">⬇️ Detections - High to Low</option>
+        </select>
+      </div>
+
+      <div id="players-tab" class="tab-content">
+        <table id="players-table">
+          <thead>
+            <tr>
+              <th>Player Name (Identifier)</th>
+              <th>Quantity Detections</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      
+    </section>
+  </div>
+
+  <div id="logs-overlay">
+    <div id="logs-container">
+      <span id="logs-close" class="close-btn"><i class="fas fa-times"></i></span>
+      <h2>Player Logs</h2>
+      <div id="logs-player-name"></div>
+      <table id="logs-table-modal">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Weapon Hash</th>
+            <th>Date/Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close" title="Close Overview">×</span>
+      <h2>Player Details</h2>
+      <div id="modal-player-name"></div>
+      <table id="modal-table">
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Weapon Hash</th>
+            <th>Date/Time</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="recreate-modal" class="hidden">
+    <div id="recreate-container">
+        <header>
+            <div class="branding-container">
+                <i class="fas fa-sync-alt"></i>
+                <span class="title">Recreate Scenario</span>
+            </div>
+            <div class="header-buttons">
+                <button id="recreate-close" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </header>
+        <section id="recreate-content">
+            <div class="input-wrapper">
+                <div class="input-container">
+                    <label for="player-id">Enter Player ID:</label>
+                    <input type="text" id="player-id" placeholder="Enter the ID of the second player">
+                </div>
+                <div class="button-container">
+                    <button id="recreate-cancel" class="cancel-btn">Cancel</button>
+                    <button id="recreate-confirm" class="confirm-btn">Confirm</button>
+                </div>
+            </div>
+        </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
