@@ -55,7 +55,7 @@ resources/[anticheat]/aimshield
 Add this line to your `server.cfg`:
 
 ```
-ensure vSync-snow
+ensure Aimshield
 ```
 
 Make sure the **resource name matches the folder name**.
